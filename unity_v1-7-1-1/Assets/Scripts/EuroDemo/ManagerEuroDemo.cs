@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class ManagerEuroDemo : MonoBehaviour
 {
-    Vector3 planeYZ = new Vector3(0f, 0.27f, -0.01f);   //y=0.26f, z=0.013f
+    Vector3 planeYZ = new Vector3(0f, 0.27f, -0.005f);   //y=0.26f, z=0.013f
     public Vector3 PlaneYZ
     {
         get { return this.planeYZ; }

@@ -368,11 +368,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 768569804322676496, guid: 858d824b787f9f74a82712703aae5746, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 858d824b787f9f74a82712703aae5746, type: 3}
---- !u!4 &461519636 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 768569804322676591, guid: 858d824b787f9f74a82712703aae5746, type: 3}
-  m_PrefabInstance: {fileID: 461519635}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &558027590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,11 +505,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 768569804322676496, guid: 858d824b787f9f74a82712703aae5746, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 858d824b787f9f74a82712703aae5746, type: 3}
---- !u!4 &871304802 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 768569804322676591, guid: 858d824b787f9f74a82712703aae5746, type: 3}
-  m_PrefabInstance: {fileID: 871304801}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922017638
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +598,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1067168781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 768569804322676591, guid: 858d824b787f9f74a82712703aae5746, type: 3}
+  m_PrefabInstance: {fileID: 1267852860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1267852860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,11 +669,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 768569804322676496, guid: 858d824b787f9f74a82712703aae5746, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 858d824b787f9f74a82712703aae5746, type: 3}
---- !u!4 &1267852861 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 768569804322676591, guid: 858d824b787f9f74a82712703aae5746, type: 3}
-  m_PrefabInstance: {fileID: 1267852860}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1514724516
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -841,12 +831,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transforms:
-  - {fileID: 871304802}
   - {fileID: 2060704529}
-  - {fileID: 461519636}
-  - {fileID: 558027591}
   - {fileID: 1684382618}
-  - {fileID: 1267852861}
+  - {fileID: 558027591}
+  - {fileID: 1067168781}
   LMPlane: {fileID: 168875810}
 --- !u!4 &1731895975
 Transform:

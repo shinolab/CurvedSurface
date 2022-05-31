@@ -366,7 +366,7 @@ public class AUTDControllerEuroExpt : MonoBehaviour
         //Debug.Log("Input.touchCount: " + Input.touchCount + "touchPosX: " + touchPosX.ToString("F4"));
         //Debug.Log("Input.mousePosition.x: " + Input.mousePosition.x.ToString("F4") + "touchPosX: " + touchPosX.ToString("F4"));
 
-        fingerPosX = (touchPos.x - Centor) / Meter - 0.002f;   // 34/33=1.03...;
+        fingerPosX = (touchPos.x - Centor) / Meter;   // 34/33=1.03...;
 
         DisplayText();
         DisplayFocus();

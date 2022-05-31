@@ -84,8 +84,8 @@ public class ManagerEuroExpt : MonoBehaviour
     {
         //curveHight = 0.005f;
 
-        sphereRadiusMM = 5;
-        sphereRadius = 0.005f;
+        sphereRadiusMM = 35;
+        sphereRadius = 0.035f;
 
         CalcCurvedLength();
         CalcHalfExploreLength();

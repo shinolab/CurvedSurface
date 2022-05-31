@@ -52,8 +52,8 @@ public class AUTDControllerEuroDemo : MonoBehaviour
     float distance = 0;
     List<float> eachBumpPosX = new List<float>();
 
-    //For Power
-    float focusPosXPower;
+    //For CSC
+    float CSCfocusPosX;
 
     float phiRad = 0f;
     float phiPlane = 0f;
@@ -66,17 +66,11 @@ public class AUTDControllerEuroDemo : MonoBehaviour
 
     //For Gain by Calc LM
     const int Freq = 15;    //freq = 5;
-    const int Size = 50;   // freq*size   sould be < 1000 
+    const int Size = 65;   // freq*size   sould be < 1000 
     float LMLength = 0.006f;   //1mm==0.001f    //LMlength=0.003f
 
-    float Theta;
-
-    Vector3 LMPos;
-    float circularPhiRad = 0f;
-
-    float circularLMPosX;
-    float circularLMPosY;
-    float circularLMPosZ;
+    float[] arrayTheta = new float[Size];
+    float[] arrayLMPosZ = new float[Size];
 
     Gain Gain;
     int Interval = (int)(1000 / (Freq * Size));  //((1/frea)/size)*1000, unit[mm]
@@ -103,6 +97,17 @@ public class AUTDControllerEuroDemo : MonoBehaviour
     //For Bump
     Vector3 posFingerBump;
     float bumpPosY;
+
+
+
+    private void CalcLMPos()
+    {
+        for (var i = 0; i < Size; i++)
+        {
+            arrayTheta[i]= 2 * Mathf.PI * i / Size;
+            arrayLMPosZ[i]=LMLength* Mathf.Sin(arrayTheta[i]);
+        }
+    }
 
     //https://ni4muraano.hatenablog.com/entry/2018/03/08/215029
     private float FindTargetBumpPosX(List<float> list, float value)
@@ -133,7 +138,7 @@ public class AUTDControllerEuroDemo : MonoBehaviour
             //Calc FocusPos by focusPosX, focusPosY, and phiNewNormalized
             if (Mathf.Abs(fingerPosX - bumpPosX) <= halfExploreLength)  //When Curved
             {
-                focusPosXPower = fingerPosX;
+                CSCfocusPosX = fingerPosX;
 
                 focusPosX = delay * (fingerPosX - bumpPosX) + bumpPosX;
 
@@ -170,16 +175,13 @@ public class AUTDControllerEuroDemo : MonoBehaviour
             //    focusPosXPower = bumpPosX - halfExploreLength;
             //}
 
-            FocusPos = new Vector3(focusPosXPower, 0, 0) + planeYZ;
+            FocusPos = new Vector3(CSCfocusPosX, 0, arrayLMPosZ[i]) + planeYZ;
 
             //Gain by Calc LMPos, and power
             if ((Mathf.Abs(fingerPosX - bumpPosX) <= halfExploreLength)) //When Curved
             {
-                Theta = 2 * Mathf.PI * i / Size;
-                LMPos = new Vector3(0.0f, 0.0f, LMLength) * Mathf.Sin(Theta);
-
                 power = Mathf.Pow(phiNewNormalized, 0.5f);
-                Gain = Gain.FocalPoint((FocusPos + LMPos), power);
+                Gain = Gain.FocalPoint((FocusPos), power);
                 //Debug.Log("Curved, " + ", FocusPos" + FocusPos.ToString("F4"));
             }
             //else //When Plane
@@ -221,18 +223,11 @@ public class AUTDControllerEuroDemo : MonoBehaviour
             //    focusPosX = bumpPosX - halfCurveLength;
             //}
 
-            FocusPos = new Vector3(focusPosX, focusPosY, 0) + planeYZ;
+            //FocusPos = new Vector3(focusPosX, focusPosY, 0) + planeYZ;
 
+            FocusPos = new Vector3(focusPosX, focusPosY, arrayLMPosZ[i]) + planeYZ;
+            Gain = Gain.FocalPoint(FocusPos);
 
-            //Gain by Calc LMPos
-            if ((Mathf.Abs(fingerPosX - bumpPosX) <= halfExploreLength)) //When Curved
-            {
-                Theta = 2 * Mathf.PI * i / Size;
-                LMPos = new Vector3(0.0f, 0.0f, LMLength) * Mathf.Sin(Theta);
-
-                Gain = Gain.FocalPoint(FocusPos + LMPos);
-                //Debug.Log("Curved, " + ", FocusPos" + FocusPos.ToString("F4"));
-            }
             //else //When Plane
             //{
             //    Gain = Gain.FocalPoint(FocusPos);
@@ -314,6 +309,8 @@ public class AUTDControllerEuroDemo : MonoBehaviour
         StartAUTD();
         ProofTS();
 
+        CalcLMPos();
+
         text = TextLM.GetComponent<Text>();
 
         Task nowait = AUTDWork();  //Prepare Thread
@@ -368,16 +365,20 @@ public class AUTDControllerEuroDemo : MonoBehaviour
         Camera.main.ScreenToWorldPoint(touchPos);
 
         ProofRL();
-        //Debug.Log("Input.touchCount: " + Input.touchCount + "touchPosX: " + touchPosX.ToString("F4"));
+
+        if ((UnityEngine.Input.GetKeyDown(KeyCode.Alpha1) || UnityEngine.Input.GetKeyDown(KeyCode.Keypad9))) //Adjusting or Presenting //true ->Adjusting
+        {
+            Debug.Log("Input.touchCount: " + Input.touchCount + "touchPosX: " + touchPos.x.ToString("F4"));
+        }
+
+            
         //Debug.Log("Input.mousePosition.x: " + Input.mousePosition.x.ToString("F4") + "touchPosX: " + touchPosX.ToString("F4"));
 
-        fingerPosX = (touchPos.x - Centor) / Meter - 0.002f;   // 34/33=1.03...;
+        fingerPosX = (touchPos.x - Centor) / Meter+0.01f;   // 34/33=1.03...;
 
         DisplayText();
         DisplayFocus();
         DisplayFinger();
-
-
     }
 
     AUTD _autd = new AUTD();
@@ -404,7 +405,8 @@ public class AUTDControllerEuroDemo : MonoBehaviour
     {
         Centor = (Left + Right) / 2;
         Length = Right - Left;
-        Meter = Length * 1000 / 346.5f;  //The length in the screen in relation to one meter in real
+        //Meter = Length * 1000 / 346.5f;  //The length in the screen in relation to one meter in real  //346.5
+        Meter = Length * 1000 / 345f;
     }
     private void ProofRL()
     {

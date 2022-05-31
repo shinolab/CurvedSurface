@@ -54,20 +54,32 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\1SphereLinearCircular\FingerController1SLC.cs" />
+    <Compile Include="Assets\Scripts\EuroExpt\CSVManagerEuroExpt.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\3_220530\BumpsEuroDemo3.cs" />
     <Compile Include="Assets\Scripts\LogMenu.cs" />
     <Compile Include="Assets\Scripts\Simple6Devices.cs" />
     <Compile Include="Assets\AUTD\Scripts\Utils\GainPair.cs" />
     <Compile Include="Assets\AUTD\Scripts\Sequence.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\BumpsControllerEuroDemo.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\V2\ManagerEuroDemo2.cs" />
+    <Compile Include="Assets\Scripts\EuroExpt\SphereControllerEuroExpt.cs" />
     <Compile Include="Assets\AUTD\Scripts\AUTD3Sharp.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\3_220530\AUTDEuroDemo3.cs" />
+    <Compile Include="Assets\Scripts\EuroExpt\ManagerEuroExpt.cs" />
     <Compile Include="Assets\AUTD\Example\SimpleAUTDController.cs" />
     <Compile Include="Assets\AUTD\Scripts\Modulation.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\V2\BumpsEuroDemo2.cs" />
     <Compile Include="Assets\AUTD\Scripts\NativeMethods.cs" />
     <Compile Include="Assets\Scripts\2SpherePositionStrength\AUTDController2SPS.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\3_220530\ManagerEuroDemo3.cs" />
     <Compile Include="Assets\Scripts\TrackAM.cs" />
     <Compile Include="Assets\Scripts\1SphereLinearCircular\Manager1SLC.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\ManagerEuroDemo.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\V2\AUTDEuroDemo2.cs" />
     <Compile Include="Assets\AUTD\Scripts\Gain.cs" />
     <Compile Include="Assets\Scripts\1SphereLinearCircular\AUTDController1SLC.cs" />
     <Compile Include="Assets\AUTD\Scripts\FirmwareInfo.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\AUTDControllerEuroDemo.cs" />
     <Compile Include="Assets\AUTD\Scripts\Link.cs" />
     <Compile Include="Assets\Scripts\FixedLM.cs" />
     <Compile Include="Assets\Scripts\2SpherePositionStrength\Manager2SPS.cs" />
@@ -75,16 +87,15 @@
     <Compile Include="Assets\AUTD\Scripts\GlobalSuppressions.cs" />
     <Compile Include="Assets\Scripts\1SphereLinearCircular\SphereController1SLC.cs" />
     <Compile Include="Assets\Scripts\EuroExpt\AUTDControllerEuroExpt.cs" />
-    <Compile Include="Assets\Scripts\EuroExpt\CSVManagerEuroExpt.cs" />
-    <Compile Include="Assets\Scripts\EuroExpt\ManagerEuroExpt.cs" />
-    <Compile Include="Assets\Scripts\EuroExpt\SphereControllerEuroExpt.cs" />
-    <Compile Include="Assets\Scripts\EuroDemo\ManagerEuroDemo.cs" />
-    <Compile Include="Assets\Scripts\EuroDemo\AUTDControllerEuroDemo.cs" />
-    <Compile Include="Assets\Scripts\EuroDemo\BumpsControllerEuroDemo.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\220518\AUTDEuroDemo220518.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\4_220524\ManagerEuroDemo4.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\4_220524\BumpsEuroDemo4.cs" />
+    <Compile Include="Assets\Scripts\EuroDemo\4_220524\AUTDEuroDemo4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AUTD\Plugins\x86_64\autd3capi-twincat-link.dll" />
     <None Include="Assets\AUTD\Plugins\x86_64\autd3capi.dll" />
+    <None Include="Assets\MeshDeleterWithTexture\LICENSE.txt" />
     <None Include="Assets\AUTD\Plugins\x86_64\autd3capi-holo-gain.dll" />
     <None Include="Assets\AUTD\Plugins\x86_64\autd3capi-soem-link.dll" />
     <None Include="Assets\AUTD\Plugins\x86_64\autd3capi-from-file-modulation.dll" />
@@ -696,6 +707,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Gatosyocora.MeshDeleterWithTexture.Editor.csproj">
+      <Project>{2CE26AE5-0AE3-863C-2895-2A0123713A60}</Project>
+      <Name>Gatosyocora.MeshDeleterWithTexture.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Gatosyocora.MeshDeleterWithTexture.Editor.Tests.csproj">
+      <Project>{B96329B3-DF78-D60D-C9C0-537088BE22AC}</Project>
+      <Name>Gatosyocora.MeshDeleterWithTexture.Editor.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -156,7 +156,7 @@ public class FixedLM : MonoBehaviour
             Thread.Sleep(milliseconds);
 
         }
-
+        //Debug.Log("Thread ID:" + Thread.CurrentThread.ManagedThreadId);
     }
 
     private void ExecuteCircularLM()     //private async void ExecuteSelfLM()

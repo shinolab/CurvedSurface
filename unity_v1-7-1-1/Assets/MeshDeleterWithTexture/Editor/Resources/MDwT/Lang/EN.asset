@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab925fdc50baf47479726bcae87997f3, type: 3}
+  m_Name: EN
+  m_EditorClassIdentifier: 
+  language: 0
+  rendererLabelText: Renderer
+  scaleLabelText: Scale
+  resetButtonText: Reset
+  importDeleteMaskButtonText: Import DeleteMask
+  exportDeleteMaskButtonText: Export DeleteMask
+  dragAndDropDeleteMaskTextureAreaText: Drag & Drop DeleteMaskTexture
+  uvMapLineColorLabelText: UVMap LineColor
+  exportUvMapButtonText: Export UVMap
+  textureLabelText: Texture (Material)
+  toolsTitleText: Tools
+  drawTypeLabelText: DrawType
+  penToolNameText: PEN
+  eraserToolNameText: ERASER
+  selectToolNameText: SELECT
+  penColorLabelText: Color
+  colorBlackButtonText: Black
+  colorRedButtonText: R
+  colorGreenButtonText: G
+  colorBlueButtonText: B
+  penEraserSizeLabelText: Pen/Eraser size
+  inverseSelectAreaButtonText: Inverse SelectArea
+  applySelectAreaButtonText: Apply SelectArea
+  inverseFillAreaButtonText: Inverse FillArea
+  clearAllDrawingButtonText: Clear All Drawing
+  undoDrawingButtonText: Undo Drawing
+  modelInformationTitleText: Model Information
+  triangleCountLabelText: Triangle Count
+  outputMeshTitleText: Output Mesh
+  saveFolderLabelText: SaveFolder
+  selectFolderButtonText: Select Folder
+  outputFileNameLabelText: Name
+  revertMeshToPrefabButtonText: Revert Mesh to Prefab
+  revertMeshToPreviouslyButtonText: Revert Mesh to previously
+  deleteMeshButtonText: Delete Mesh
+  androidNotSupportMessageText: 'Can''t use with BuildTarget ''Android''.
+
+    Please
+    switch BuildTarget to PC'
+  errorDialogTitleText: Error has occurred
+  notFoundVerticesExceptionDialogMessageText: Not found vertices to delete.
+  errorDialogOkText: OK

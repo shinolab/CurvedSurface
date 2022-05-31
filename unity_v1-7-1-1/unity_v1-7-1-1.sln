@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{6A25CD14-E468-27CF-227D-E9158A92DB7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gatosyocora.MeshDeleterWithTexture.Editor", "Gatosyocora.MeshDeleterWithTexture.Editor.csproj", "{2CE26AE5-0AE3-863C-2895-2A0123713A60}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{0F37EC0C-A133-798E-5110-7008205A9C33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gatosyocora.MeshDeleterWithTexture.Editor.Tests", "Gatosyocora.MeshDeleterWithTexture.Editor.Tests.csproj", "{B96329B3-DF78-D60D-C9C0-537088BE22AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +19,18 @@ Global
 		{6A25CD14-E468-27CF-227D-E9158A92DB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A25CD14-E468-27CF-227D-E9158A92DB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A25CD14-E468-27CF-227D-E9158A92DB7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CE26AE5-0AE3-863C-2895-2A0123713A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE26AE5-0AE3-863C-2895-2A0123713A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE26AE5-0AE3-863C-2895-2A0123713A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE26AE5-0AE3-863C-2895-2A0123713A60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F37EC0C-A133-798E-5110-7008205A9C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F37EC0C-A133-798E-5110-7008205A9C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F37EC0C-A133-798E-5110-7008205A9C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F37EC0C-A133-798E-5110-7008205A9C33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B96329B3-DF78-D60D-C9C0-537088BE22AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B96329B3-DF78-D60D-C9C0-537088BE22AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B96329B3-DF78-D60D-C9C0-537088BE22AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B96329B3-DF78-D60D-C9C0-537088BE22AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
