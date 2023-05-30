@@ -55,6 +55,7 @@ public class Impact : MonoBehaviour
 
         //Task nowait = AUTDWork();  //Prepare Thread
 
+        _autd.Send(new Sine(freqNow, 0.5f));
         Debug.Log("Material: Metal");
 
     }
@@ -104,28 +105,8 @@ public class Impact : MonoBehaviour
         onCollision = _object.OnCollision;
         //Debug.Log("AUTD, onCollision: "+onCollision);
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1) )
-        {
-            freqNow = freqMaterial[0];
-            dampNow = dampMaterial[0];
-            Debug.Log("Material: Metal");
-            return;
-        }
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            freqNow = freqMaterial[1];
-            dampNow = dampMaterial[1];
-            Debug.Log("Material: Wood");
-            return;
-        }
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            freqNow = freqMaterial[2];
-            dampNow = dampMaterial[2];
-            Debug.Log("Material: Rubber");
-            return;
-        }
-
+        
+        ChangeMateials();
 
         timeCollision += Time.deltaTime;
 
@@ -144,7 +125,7 @@ public class Impact : MonoBehaviour
         if (onCollision == true)
         {
             timeCollision = 0f;
-            _autd.Send(new Sine(freqNow, 0.5f)); // 150 Hz
+            //_autd.Send(new Sine(freqNow, 0.5f)); // 150 Hz
             _autd.Send(new Focus(YZ, 1));
 
         }
@@ -165,6 +146,34 @@ public class Impact : MonoBehaviour
 
 
 
+    }
+
+    private void ChangeMateials()
+    {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha1)) //Metal
+        {
+            freqNow = freqMaterial[0];
+            dampNow = dampMaterial[0];
+            _autd.Send(new Sine(freqNow, 0.5f));
+            Debug.Log("Material: Metal");
+            return;
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha2)) //Wood
+        {
+            freqNow = freqMaterial[1];
+            dampNow = dampMaterial[1];
+            _autd.Send(new Sine(freqNow, 0.5f));
+            Debug.Log("Material: Wood");
+            return;
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha3)) //Rubber
+        {
+            freqNow = freqMaterial[2];
+            dampNow = dampMaterial[2];
+            _autd.Send(new Sine(freqNow, 0.5f));
+            Debug.Log("Material: Rubber");
+            return;
+        }
     }
 
     private void OnApplicationQuit()

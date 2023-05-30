@@ -19,15 +19,15 @@ public class FixedLM : MonoBehaviour
 
     Vector3 FocusPos;
 
-    Vector3 YZ = new Vector3(0f, 0.30f, 0f); //y=0.27f, z=-0.01f
+    Vector3 YZ = new Vector3(0f, 0.22f, 0.11f); //y=0.30f, z=0f
 
     bool flag = true;
 
 
     //For Gain by Calc Linear LM / Circular LM
-    const int Freq = 15;    //freq = 5;
-    const int Size = 65;   // freq*size   sould be < 1000 
-    float LMLength = 0.01f;   //1mm==0.001f    //LMlength=0.003f
+    const int Freq = 5;    //freq = 5;
+    const int Size = 80;   // freq*size   sould be < 500 
+    float LMLength = 0.003f;   //1mm==0.001f    //LMlength=0.003f
 
     int Interval = (int)(1000 / (Freq * Size));  //Unit; Millisecondes
 
@@ -124,7 +124,7 @@ public class FixedLM : MonoBehaviour
         _link = new SOEM(ifname, _autd.NumDevices);
         _autd.Open(_link);
 
-        _autd.CheckAck = true;
+        _autd.CheckAck = false;
 
         _autd.Clear();
 
