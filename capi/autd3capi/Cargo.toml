@@ -1,0 +1,24 @@
+[package]
+name = "autd3capi"
+version = "14.2.2"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+autd3capi-def = { path = "../autd3capi-def" }
+autd3-core = { path = "../../src/autd3-core" }
+
+[build-dependencies]
+wrapper-generator = { path = "../wrapper-generator" }
+
+[features]
+single_float = ["autd3capi-def/single_float", "autd3-core/single_float"]
+use_meter = ["autd3capi-def/use_meter", "autd3-core/use_meter"]
+parallel = ["autd3capi-def/parallel", "autd3-core/parallel"]
+
+[dev-dependencies]
+assert_approx_eq = "1.1.0"
+memoffset = "0.9.0"

@@ -1,0 +1,36 @@
+[package]
+name = "autd3"
+version = "14.2.2"
+authors = ["shun suzuki <suzuki@hapis.k.u-tokyo.ac.jp>"]
+edition = "2021"
+
+license = "MIT"
+description = "AUTD3 library"
+repository = "https://github.com/shinolab/autd3"
+readme = "README.md"
+keywords = ["autd"]
+
+[dependencies]
+autd3-core = { path = "../autd3-core", version = "14.2.2" }
+autd3-derive = { path = "../autd3-derive", version = "14.2.2" }
+autd3-firmware-emulator = { path = "../autd3-firmware-emulator", version = "14.2.2" }
+num = "0.4.0"
+thiserror = "1.0.31"
+spdlog-rs = "0.3.8"
+bitvec = "1.0.1"
+
+[features]
+default = []
+single_float = ["autd3-core/single_float"]
+use_meter = ["autd3-core/use_meter"]
+parallel = ["autd3-core/parallel"]
+
+[dev-dependencies]
+assert_approx_eq = "1.1.0"
+rand = "0.8.5"
+criterion = { version = "0.5.1", features = ["html_reports"] }
+
+[[bench]]
+name = "gain"
+path = "benches/gain/primitive.rs"
+harness = false

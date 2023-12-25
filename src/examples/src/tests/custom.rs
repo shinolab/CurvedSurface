@@ -1,0 +1,78 @@
+/*
+ * File: custom.rs
+ * Project: tests
+ * Created Date: 24/05/2023
+ * Author: Shun Suzuki
+ * -----
+ * Last Modified: 19/08/2023
+ * Modified By: Shun Suzuki (suzuki@hapis.k.u-tokyo.ac.jp)
+ * -----
+ * Copyright (c) 2023 Shun Suzuki. All rights reserved.
+ *
+ */
+
+use autd3::{
+    core::{
+        error::AUTDInternalError,
+        float,
+        gain::Gain,
+        geometry::{Geometry, Transducer},
+        modulation::Modulation,
+        Drive,
+    },
+    prelude::*,
+    traits::{Gain, Modulation},
+};
+use autd3_core::gain::GainFilter;
+
+#[derive(Gain, Clone, Copy)]
+pub struct Uniform {}
+
+impl Uniform {
+    pub fn new() -> Self {
+        Self {}
+    }
+}
+
+impl<T: Transducer> Gain<T> for Uniform {
+    fn calc(
+        &self,
+        geometry: &Geometry<T>,
+        filter: GainFilter,
+    ) -> Result<Vec<Drive>, AUTDInternalError> {
+        Ok(Self::transform(geometry, filter, |_| Drive {
+            phase: 0.0,
+            amp: 1.0,
+        }))
+    }
+}
+
+#[derive(Modulation, Clone, Copy)]
+pub struct Burst {
+    freq_div: u32,
+}
+
+impl Burst {
+    pub fn new() -> Self {
+        Self { freq_div: 5120 }
+    }
+}
+
+impl Modulation for Burst {
+    fn calc(&self) -> Result<Vec<float>, AUTDInternalError> {
+        Ok((0..4000)
+            .map(|i| if i == 3999 { 1.0 } else { 0.0 })
+            .collect())
+    }
+}
+
+pub fn custom<T: Transducer, L: Link<T>>(autd: &mut Controller<T, L>) -> anyhow::Result<bool> {
+    autd.send(SilencerConfig::none())?;
+
+    let g = Uniform::new();
+    let m = Burst::new();
+
+    autd.send((m, g))?;
+
+    Ok(true)
+}
